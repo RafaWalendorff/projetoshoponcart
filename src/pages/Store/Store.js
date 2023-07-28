@@ -10,6 +10,7 @@ import { fetchStoreItemsAction } from '../../store/actions';
 export const Store = () => {
     console.log('Componente Store sendo renderizado');
     const { state, dispatch } = useAppContext();
+    
     const [showFeedback, setShowFeedback] = useState(false);
 
     const fetchProducts = async () => {
@@ -35,6 +36,7 @@ export const Store = () => {
             <ModalAddToCart open={state.modalOpen} />
             {showFeedback && (
                 <Notification
+                    className="notification"
                     message='Adicionado ao carrinho com sucesso!'
                     onClose={() => setShowFeedback(false)}
                 />
@@ -43,6 +45,7 @@ export const Store = () => {
                 <Row>
                     {state.products.map(product => (
                         <Col
+                        className='mb-3'
                             key={product.id}
                             xs={12}
                             md={6}
@@ -54,10 +57,6 @@ export const Store = () => {
                 </Row>
                 <Row>
                     <Col xs={12}>
-                        <div className="cart-checkout">
-                            <p>Total: ${cartTotal}</p>
-                            <button>Checkout</button>
-                        </div>
                     </Col>
                 </Row>
             </Container>

@@ -109,7 +109,6 @@ export const ModalAddToCart = ({ open }) => {
                     onClick={handleAddToCart}
                     disabled={isLoading}
                 />
-
             </Modal.Footer>
         </Modal>
     )

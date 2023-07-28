@@ -1,3 +1,6 @@
+export const getCart = async () => {
+    return JSON.parse(localStorage.getItem('cart')) || [];
+}
 
 export const getProducts = async () => {
     return JSON.parse(localStorage.getItem('products')) || [
@@ -46,10 +49,5 @@ export const getProducts = async () => {
     ]
 }
 
-export const getCart = async () => {
-    return JSON.parse(localStorage.getItem('cart')) || [];
-}
 
-export const setCart = async (cart) => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-}
+

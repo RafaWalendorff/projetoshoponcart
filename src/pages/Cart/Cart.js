@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import { ListGroup, Button, Card } from "react-bootstrap";
 import { useAppContext } from '../../store/AppContext';
 import { removeItemFromCartAction } from '../../store/actions';
 import { CartItem } from './CartItem';
+import { ModalPaymentCard } from '../../containers/ModalPaymentCard/ModalPaymentCard';
 
 export const Cart = () => {
     const { state, dispatch } = useAppContext();
 
-    const handleRemoveItem = (itemId) => {
-        dispatch(removeItemFromCartAction(itemId));
-    }
+    const [showModal, setShowModal] = useState(false);
 
     const cartTotal = state.cart.reduce((total, item) => total + item.quantity * item.price, 0);
+    const totalItemsInCart = state.cart.reduce((total, product) => total + product.quantity, 0);
+
+    const handleRemoveItem = (itemId) => {
+        dispatch(removeItemFromCartAction(itemId));
+    };
 
     const handleCheckout = () => {
         console.log("Finalizando compra");
-    }
+        setShowModal(true);
+    };
 
     return (
         <Container>
-            <div className='row'>
+            <Row>
                 <div className='col-12'>
                     <h2>Carrinho de compras</h2>
                 </div>
-            </div>
+            </Row>
             <ListGroup>
                 {state.cart.map(item => (
                     <ListGroup.Item
@@ -35,23 +41,38 @@ export const Cart = () => {
                 ))}
             </ListGroup>
             <Card className="mt-3 p-3">
-                <div className='row'>
-                    <div className='col-6'>
+                <Row className='align-items-center'>
+                    <div className='col-7 '>
                         <h4>Total: R${cartTotal.toFixed(2)}</h4>
+                        
                     </div>
-                    <div className='col-6 d-flex justify-content-end'>
+                    <div className='col-5 d-flex align-items-center'>
                         <Button
+                        className='col-12'
                             variant="success"
                             onClick={handleCheckout}
+                            style={{marginTop: "1rem", marginBottom: "0rem"}}
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart-check-fill" viewBox="0 0 16 16">
-                                <path d="M3 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1h7a1 1 0 0 1 .992 1.124l-1 8A1 1 0 0 1 11 12H3a1 1 0 0 1-1-1V1zm5.5 6a.5.5 0 0 0 0 1h.634l.866 2H6a.5.5 0 0 0 0 1H8.5a.5.5 0 0 0 .492-.41l.9-3.447a.5.5 0 0 0-.01-.183l-.72-2.58A.5.5 0 0 0 8.5 3H4.118l.447 1H8.5z" />
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="16"
+                                height="16"
+                                fill="currentColor"
+                                class="bi bi-wallet2 mx-1"
+                                viewBox="0 0 16 16">
+                                <path d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499L12.136.326zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484L5.562 3zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z" />
                             </svg>
                             Finalizar compra
                         </Button>
                     </div>
-                </div>
+                </Row>
+                <Row>
+                <p>{totalItemsInCart.toFixed(0)} itens no carrinho</p>
+                </Row>
             </Card>
+            <Row className="justify-content-center">
+            <ModalPaymentCard show={showModal} onHide={() => setShowModal(false)} />
+            </Row>
         </Container>
     )
 }
