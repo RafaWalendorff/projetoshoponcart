@@ -3,7 +3,7 @@ import { Modal, Card, Form, Row, Col, Button } from 'react-bootstrap';
 import { useCart } from '../../hooks/useCart';
 import { currencyFormatter } from '../../utilities/formatCurrency';
 
-export const ModalPaymentCard = ({ show, onHide, cartItemCount }) => {
+export const ModalPaymentCard = ({ show, onHide }) => {
   const { cart } = useCart();
 
   const totalPrice = cart.reduce((sum, product) => {

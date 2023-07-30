@@ -16,6 +16,12 @@ export const ModalAddToCart = ({ open }) => {
 
     const product = state.products.find(p => p.id === state.activeItemId);
 
+    useEffect(() => {
+        if (!open) {
+            setQuantity(1);
+        }
+    }, [open]);
+
     const handleClose = () => {
         console.log('fechando');
         dispatch(closeModalAction());

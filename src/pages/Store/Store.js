@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { CardContainer } from "../../containers/Card/Card";
+import { Card } from "../../components/Card/Card";
 import { ModalAddToCart } from "../../containers/ModalAddToCart/ModalAddToCart";
 import { Notification } from '../../components/Notification/Notification';
 import { useAppContext } from '../../store/AppContext';
@@ -13,14 +13,14 @@ export const Store = () => {
     
     const [showFeedback, setShowFeedback] = useState(false);
 
-    const fetchProducts = async () => {
+    const fetchProducts = useCallback(async () => {
         console.log('Fetch products iniciado');
         await fetchStoreItemsAction(dispatch);
-    };
+    }, [dispatch]);
 
     useEffect(() => {
         fetchProducts();
-    }, [dispatch]);
+    }, [fetchProducts]);
 
     useEffect(() => {
         console.log('Estado atualizado:', state);
@@ -42,16 +42,16 @@ export const Store = () => {
                 />
             )}
             <Container fluid>
-                <Row>
+                <Row className="d-flex align-items-stretch">
                     {state.products.map(product => (
                         <Col
-                        className='mb-3'
+                        className='mb-3 d-flex align-items-stretch'
                             key={product.id}
-                            xs={12}
-                            md={6}
+                            xs={6}
+                            md={4}
                             lg={4}
-                            xl={3}>
-                            <CardContainer {...product} />
+                            xl={2}>
+                            <Card {...product} />
                         </Col>
                     ))}
                 </Row>

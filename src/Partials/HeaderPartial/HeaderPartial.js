@@ -13,7 +13,7 @@ export const HeaderPartial = () => {
     return (
         <Navbar sticky='top' className="bg-white shadow-sm mb-3">
             <Container>
-                <Navbar.Brand href="#home">ShopOn</Navbar.Brand>
+            <Link to="/" className="navbar-brand">ShopOn</Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">

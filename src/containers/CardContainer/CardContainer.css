@@ -1,0 +1,11 @@
+@media (max-width: 576px) {
+  .responsive-text-price {
+    font-size: 91%;
+  }
+  .responsive-text-button {
+    font-size: 70%;
+  }
+  .responsive-text {
+      font-size: 80%;
+  }
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import ButtonBS from 'react-bootstrap/Button';
 import { Badge, Form, Button } from "react-bootstrap";
 import { useCart } from "../../hooks/useCart";
 import { currencyFormatter } from "../../utilities/formatCurrency"
@@ -23,7 +22,7 @@ export const CartItem = ({ id, image, title, quantity, price }) => {
 
   return (
     <div className="row align-items-center">
-      <div className="col-2">
+      <div className="col-2 ">
         <img
           src={image}
           alt={title}
@@ -31,10 +30,10 @@ export const CartItem = ({ id, image, title, quantity, price }) => {
           className="image"
         />
       </div>
-      <div className="col-3">
+      <div className="col-4">
         <div className="fw-bold ">{title}</div>
       </div>
-      <div className="col-2 d-flex justify-content-around">
+      <div className="col-2 d-flex justify-content-around cart-items">
         <Button
           variant='outline-primary'
           onClick={handleDecrease}
@@ -64,7 +63,7 @@ export const CartItem = ({ id, image, title, quantity, price }) => {
           }}
         >+</Button>
       </div>
-      <div className="col-3 d-flex justify-content-center">
+      <div className="col-2 d-flex justify-content-center">
         <Button
           variant="danger"
           className='rounded-circle'

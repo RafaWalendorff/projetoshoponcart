@@ -31,10 +31,7 @@ export function reducer(state, action) {
             };
 
         case types.addItemToCartType: {
-            // Verifique se o item já está no carrinho
             const existingCartItem = state.cart.find(item => item.id === action.payload.id);
-
-            // Se o item já existe no carrinho, atualize a quantidade
             if (existingCartItem) {
                 return {
                     ...state,
@@ -45,7 +42,6 @@ export function reducer(state, action) {
                 };
             }
 
-            // Se o item não está no carrinho, adicione ao carrinho
             else {
                 return {
                     ...state,
@@ -56,7 +52,6 @@ export function reducer(state, action) {
         }
 
         case types.removeItemFromCartType: {
-            // Filtre o item do carrinho
             const updatedCart = state.cart.filter(item => item.id !== action.payload.id);
 
             return {
@@ -65,7 +60,6 @@ export function reducer(state, action) {
                 cart: updatedCart
             };
         }
-
 
         case types.addItemToCartSuccessType:
         case types.removeItemFromCartSuccessType:
