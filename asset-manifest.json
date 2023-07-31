@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/projetoshoponcart/static/css/main.6bc67fb8.css",
+    "main.js": "/projetoshoponcart/static/js/main.13004d0b.js",
+    "static/js/787.a124cf2c.chunk.js": "/projetoshoponcart/static/js/787.a124cf2c.chunk.js",
+    "static/media/carousel-1.png": "/projetoshoponcart/static/media/carousel-1.e36d73c53af9b1718576.png",
+    "static/media/carousel-3.webp": "/projetoshoponcart/static/media/carousel-3.04fc4ca30cb7eed5b14c.webp",
+    "static/media/carousel-2.webp": "/projetoshoponcart/static/media/carousel-2.8cacb1740d9d86dbda52.webp",
+    "index.html": "/projetoshoponcart/index.html",
+    "main.6bc67fb8.css.map": "/projetoshoponcart/static/css/main.6bc67fb8.css.map",
+    "main.13004d0b.js.map": "/projetoshoponcart/static/js/main.13004d0b.js.map",
+    "787.a124cf2c.chunk.js.map": "/projetoshoponcart/static/js/787.a124cf2c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6bc67fb8.css",
+    "static/js/main.13004d0b.js"
+  ]
+}
